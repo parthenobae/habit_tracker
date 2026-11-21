@@ -1,0 +1,11 @@
+import { Router } from "express";
+import protect from "../middleware/auth.js";
+import { getHabits, createHabit, updateHabit, deleteHabit, toggleCompletion } from "../controllers/habitController.js";
+const router = Router();
+router.use(protect);
+router.get("/", getHabits);
+router.post("/", createHabit);
+router.put("/:id", updateHabit);
+router.delete("/:id", deleteHabit);
+router.post("/:id/toggle", toggleCompletion);
+export default router;
